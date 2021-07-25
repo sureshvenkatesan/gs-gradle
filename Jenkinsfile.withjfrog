@@ -6,15 +6,13 @@ node {
     checkout scm
   }
   stage('build') {
-     withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
-       myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
-             sh 'cd complete && ./gradlew build'
-       }
-     }
+           myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
+             /bin/sh 'cd complete && ./gradlew build'
+       }   
   }
   stage('test') {
      myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
-       sh 'cd complete && ./gradlew test'
+       /bin/sh 'cd complete && ./gradlew test'
      }
   }
   stage('publish') {

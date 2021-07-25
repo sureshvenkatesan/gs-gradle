@@ -7,7 +7,9 @@ node {
   }
   stage('build') {
      myGradleContainer.inside("-v ${env.HOME}/.gradle:/home/gradle/.gradle") {
+       withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
        sh 'cd complete && ./gradlew build'
+       }
      }
   }
   stage('test') {

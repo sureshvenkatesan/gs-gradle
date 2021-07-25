@@ -22,6 +22,10 @@ jar {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+configurations {
+testCompile
+}
+
 dependencies {
     implementation "joda-time:joda-time:2.2"  //Compile time dependencies. Superseded by implementation https://tomgregory.com/gradle-implementation-vs-compile-dependencies/
     testCompile "junit:junit:4.12"
